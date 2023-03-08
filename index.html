@@ -1,15 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub - Tutorial</title>
+    <style>.number {
+        display: inline-block;
+        font-size: 72px;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      
+    </style>
 </head>
+
 <body>
-    <h1>Hello GitHub</h1>
-    <p>new text by bob</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas neque dignissimos, perspiciatis hic dolorum suscipit sapiente dolor minima facilis quasi, molestiae aut aperiam debitis mollitia vitae, velit voluptates vero magnam.</p>
-    <button>Submit</button>
+ 
+    <div id="number-container">
+        <span class="number">0</span>
+        <span class="number">0</span>
+        <span class="number">0</span>
+        <span class="number">0</span>
+        <span class="number">0</span>
+        <span class="number">0</span>
+      </div>
+
+    <script>
+   // Get the number container element
+const numberContainer = document.getElementById('number-container');
+
+// Create an array of numbers to randomly select from
+const numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+// Loop through each number element and start its animation
+const numbersElements = numberContainer.querySelectorAll('.number');
+numbersElements.forEach((numberElement) => {
+  // Generate a random number to stop at
+  const stopNumber = Math.floor(Math.random() * 10);
+
+  // Start the counting animation for this number
+  let count = 0;
+  const intervalId = setInterval(() => {
+    numberElement.innerText = numbers[count];
+    count++;
+
+    if (count > 9) {
+      count = 0;
+    }
+
+    // Stop the counting animation when we reach the stop number
+    if (count === stopNumber) {
+      clearInterval(intervalId);
+    }
+  }, 50);
+});
+
+    </script>
 </body>
+
 </html>
